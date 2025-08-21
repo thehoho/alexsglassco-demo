@@ -1,0 +1,66 @@
+/* ===== CTA (scoped) ===== */
+.cta-glass {
+  background: radial-gradient(
+      900px 300px at 15% -8%,
+      rgba(125, 211, 252, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(#f8fafc, #fff);
+}
+.cta-wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .cta-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cta-copy h2 {
+  margin: 0.35rem 0 1rem;
+  max-width: 22ch;
+}
+.cta-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding: 0;
+  margin: 1rem 0 0;
+  list-style: none;
+  color: var(--muted);
+}
+.cta-trust li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+.cta-trust li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+/* right card */
+.cta-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(255, 255, 255, 0.84)
+  );
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.cta-steps {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.25rem;
+}
+.cta-steps li {
+  margin: 0.25rem 0;
+}

@@ -1,0 +1,65 @@
+/* ===== About Simple ===== */
+.about-simple {
+  background: linear-gradient(#fff, #f9fafb);
+}
+
+.about-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-image img {
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.about-copy h2 {
+  margin: 0.5rem 0 1rem;
+}
+.about-copy .small {
+  max-width: 62ch;
+}
+
+/* checklist re-use */
+.checks {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: 0.65rem;
+}
+.checks li {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.checks li::after {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 0.6rem;
+  width: 0.35rem;
+  height: 0.18rem;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+}

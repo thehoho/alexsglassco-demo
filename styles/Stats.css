@@ -1,0 +1,66 @@
+/* ===== Stats row ===== */
+.stats-row {
+  background: linear-gradient(#f9fafb, #fff);
+  padding-top: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+.stats-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.8)
+  );
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.stat-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--primary);
+  background: radial-gradient(
+      60% 60% at 35% 20%,
+      rgba(27, 143, 217, 0.15),
+      transparent 60%
+    ),
+    #f8fafc;
+  border: 1px solid var(--border);
+  flex: none;
+}
+
+.stat-body {
+  display: flex;
+  flex-direction: column;
+}
+.stat-value {
+  font-family: Outfit, Inter, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 0.95rem;
+}
