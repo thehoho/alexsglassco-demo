@@ -1,0 +1,159 @@
+/* ============================
+   Services Page Styles
+   ============================ */
+
+/* Page hero/topper */
+.page-hero {
+  padding: 150px 0 60px;
+  text-align: center;
+  background: linear-gradient(#fff, #f8fafc);
+}
+.page-hero h1 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+.page-hero .sub {
+  max-width: 62ch;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+
+/* Steps */
+.steps-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+@media (max-width: 900px) {
+  .steps-3 {
+    grid-template-columns: 1fr;
+  }
+}
+.step h3 {
+  margin: 0.35rem 0 0.25rem;
+}
+
+/* Service detail cards share the same aesthetic */
+.service-detail {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+/* Checks list, reused */
+.checks {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.25rem;
+}
+.checks li {
+  margin: 0.25rem 0;
+}
+.checks li:before {
+  content: "✓";
+  color: var(--primary);
+  display: inline-block;
+  width: 1.25rem;
+  margin-left: -1.25rem;
+}
+
+/* Grid */
+.services-grid .grid {
+  /* you already use .grid; these ensure columns for this page */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+@media (min-width: 1100px) {
+  .services-grid .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .services-grid .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.service {
+  position: relative;
+  padding: clamp(1rem, 2.5vw, 1.25rem);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.88)
+  );
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.service:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+/* Icon tile */
+.icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.65rem;
+  color: var(--primary);
+  background: radial-gradient(
+      60% 60% at 35% 25%,
+      rgba(27, 143, 217, 0.18),
+      transparent 60%
+    ),
+    #f8fafc;
+  border: 1px solid var(--border);
+}
+
+/* Headings + text */
+.service h3 {
+  margin: 0.25rem 0 0.35rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+}
+.service p {
+  margin: 0;
+  color: var(--text);
+}
+
+/* Optional: subtle divider for long copy blocks */
+.service + .service .hr,
+.service .hr {
+  border-top: 1px solid var(--border);
+  margin: 0.9rem 0 0.75rem;
+}
+
+/* CTA section on services page */
+.section.cta {
+  text-align: center;
+  background: linear-gradient(#f8fafc, #fff);
+  padding-top: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+.section.cta h2 {
+  margin: 0 0 0.5rem;
+}
+.section.cta .sub {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Accessibility tweaks */
+.service:focus-within {
+  outline: 3px solid rgba(27, 143, 217, 0.25);
+  outline-offset: 2px;
+}
+
+/* (Optional) “We don’t do” notice block if you add it */
+.notice {
+  background: #fff7f7;
+  border: 1px solid #ffd4d4;
+  color: #a32323;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+}

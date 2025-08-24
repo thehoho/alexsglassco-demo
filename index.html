@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- SEO + Social -->
     <title>
-      Alex’s Glass & Mirror | Frameless Showers, Windows & Custom Mirrors in
+      Alex's Glass Company | Frameless Showers, Windows & Custom Mirrors in
       Dallas-Fort Worth
     </title>
     <meta
       name="description"
-      content="Alex’s Glass & Mirror installs and repairs frameless shower doors, window glass, and custom mirrors in Dallas-Fort Worth. Fast quotes, clean installs, and top-rated service."
+      content="Alex's Glass Company installs and repairs frameless shower doors, window glass, and custom mirrors in Dallas-Fort Worth. Fast quotes, clean installs, and top-rated service."
     />
     <link rel="canonical" href="https://alexsglassco.com/" />
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
@@ -88,7 +88,10 @@
         <div class="container flex items-start wrap">
           <div class="hero-copy">
             <span class="eyebrow">Serving Dallas Fort Worth</span>
-            <h1>Crystal-clear glass. Flawless installs.</h1>
+            <h1>Glass replacement & custom showers in DFW</h1>
+            <p class="small muted" style="margin: 0.25rem 0 1rem">
+              The Next Generation of Dallas Glaziers
+            </p>
             <p class="sub">
               Frameless shower doors, window glass, and custom mirrors—measured,
               fabricated, and installed by pros who treat your home like their
@@ -276,7 +279,8 @@
 
             <ul class="checks">
               <li>20+ years combined glass experience</li>
-              <li>Licensed, insured & warranty backed</li>
+              <li>Fully insured & warranty backed</li>
+              <!-- updated -->
               <li>Fast lead times & honest pricing</li>
               <li>Meticulous cleanup after every job</li>
             </ul>
@@ -622,7 +626,8 @@
             </div>
 
             <ul class="cta-trust">
-              <li>Licensed & insured</li>
+              <li>Fully insured</li>
+              <!-- changed -->
               <li>Upfront pricing</li>
               <li>Warranty</li>
             </ul>
@@ -763,6 +768,35 @@
       </button>
     </div>
   </body>
+  <script>
+    (function () {
+      const form = document.getElementById("contact-form");
+      const select = document.getElementById("service-select");
+      const warning = document.getElementById("service-warning");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      function checkService() {
+        const v = select.value;
+        const blocked = v === "auto" || v === "window-frames";
+        warning.style.display = blocked ? "block" : "none";
+        submitBtn.disabled = blocked;
+        submitBtn.style.opacity = blocked ? 0.6 : 1;
+        submitBtn.style.cursor = blocked ? "not-allowed" : "pointer";
+      }
+
+      select.addEventListener("change", checkService);
+      form.addEventListener("submit", function (e) {
+        checkService();
+        if (submitBtn.disabled) {
+          e.preventDefault();
+        }
+      });
+
+      // run once on load
+      checkService();
+    })();
+  </script>
+
   <script src="JS/Header.js"></script>
   <script src="JS/Modal.js"></script>
 </html>

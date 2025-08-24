@@ -1,0 +1,101 @@
+/* About page micro-polish */
+.page-hero {
+  padding: 150px 0 60px;
+  text-align: center;
+  background: linear-gradient(#fff, #f8fafc);
+}
+.about-simple .about-image img {
+  border-radius: 14px;
+}
+.cta-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem 1.25rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0;
+}
+.cta-trust li {
+  margin: 0.25rem 0;
+}
+.cta-trust li:before {
+  content: "✓";
+  color: var(--primary);
+  display: inline-block;
+  width: 1.25rem;
+  margin-left: -1.25rem;
+}
+/* Match stat chips look for Values section */
+.icon-chip {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    180deg,
+    rgba(27, 143, 217, 0.06),
+    rgba(27, 143, 217, 0.03)
+  );
+  box-shadow: inset 0 0 0 1px rgba(27, 143, 217, 0.08),
+    0 1px 2px rgba(16, 24, 40, 0.06);
+  color: var(--primary); /* makes SVG stroke match theme */
+  flex: none;
+}
+
+/* Keep all small icons consistent everywhere */
+.icon-chip svg,
+.icon-box svg,
+.stat-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none; /* prevents any solid fill icons */
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+}
+
+/* Card polish to mirror your stat cards */
+.values .card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.2vw, 1.5rem);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.values .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+}
+
+/* Layout for the three value cards */
+.values .grid {
+  gap: clamp(1rem, 2.2vw, 1.25rem);
+}
+.values .card h3 {
+  margin-top: 0.5rem;
+}
+.values .card p {
+  margin: 0.35rem 0 0;
+}
+/* subtle band before stats */
+.section + .stats-row {
+  position: relative;
+  margin-top: 0;
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+}
+.section + .stats-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 36px;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 48, 71, 0.03),
+    rgba(2, 48, 71, 0)
+  );
+  pointer-events: none;
+}

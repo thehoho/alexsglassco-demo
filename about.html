@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>About | Alex’s Glass Company</title>
+    <meta
+      name="description"
+      content="Alex’s Glass Company is a fully insured Dallas–Fort Worth glazing team delivering frameless showers, window glass, custom mirrors, and storefronts with clean, precise installs."
+    />
+    <link rel="canonical" href="https://alexsglassco.com/about" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/Main.css" />
+    <link rel="stylesheet" href="styles/Header.css" />
+    <link rel="stylesheet" href="styles/Footer.css" />
+    <link rel="stylesheet" href="styles/About.css" />
+    <link rel="stylesheet" href="styles/Stats.css" />
+    <!-- Optional page-specific tiny add-ons -->
+    <link rel="stylesheet" href="styles/AboutPage.css" />
+  </head>
+  <body>
+    <!-- ===== Header (reuse yours) ===== -->
+    <header id="site-header" class="nav">
+      <div class="container">
+        <a href="/" class="logo" aria-label="Back to home">
+          <img
+            src="images/logo.png"
+            alt="Alex's Glass Company"
+            decoding="async"
+          />
+          <span>Alex's Glass Company</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          aria-label="Open menu"
+          aria-controls="main-menu"
+          aria-expanded="false"
+        >
+          <span class="burger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+
+        <nav class="menu" role="navigation">
+          <div class="menu-wrap">
+            <ul id="main-menu" class="menu-list" aria-expanded="false">
+              <li class="menu-item"><a class="link" href="/">Home</a></li>
+              <li class="menu-item">
+                <a class="link active" href="/about">About</a>
+              </li>
+              <li class="menu-item">
+                <a class="link" href="/services">Services</a>
+              </li>
+              <li class="menu-item">
+                <a class="link" href="/projects">Projects</a>
+              </li>
+              <li class="menu-item">
+                <a class="link" href="/contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="contact">
+          <a class="phone" href="tel:+14692545439">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 12.8 19.79 19.79 0 0 1 .08 4.18 2 2 0 0 1 2.06 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L6.1 9.9a16 16 0 0 0 8 8l1.46-1.06a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z"
+                fill="currentColor"
+              />
+            </svg>
+            469-254-5439
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="page-hero text-center">
+        <div class="container">
+          <span class="eyebrow">The Next Generation of Dallas Glaziers</span>
+          <h1>About Alex’s Glass Company</h1>
+          <p class="sub">
+            Clean lines. Precise measurements. Installs you can see through.
+          </p>
+        </div>
+      </section>
+
+      <!-- Story (simple side-by-side; single image left) -->
+      <section class="section about-simple">
+        <div class="container grid about-grid">
+          <!-- Image -->
+          <div class="about-image">
+            <!-- Use a real team/shop photo if you have one -->
+            <img
+              src="images/o-6.jpg"
+              alt="Alex’s Glass on site"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <!-- Copy -->
+          <div class="about-copy">
+            <h2 class="mt-0">Our story</h2>
+            <p class="small muted">
+              Alex started with a simple belief: do the job like it’s your own
+              home or business. Today, our fully insured DFW team delivers
+              frameless showers, window glass, custom mirrors, and storefronts
+              with clean edges and tight tolerances—no shortcuts.
+            </p>
+
+            <ul class="checks">
+              <li>Fully insured • Warranty on workmanship</li>
+              <li>Exact measurements & clear, up-front pricing</li>
+              <li>Respectful crews and meticulous cleanup</li>
+              <li>Residential & commercial glazing across DFW</li>
+            </ul>
+
+            <div class="flex wrap gap mt-2">
+              <a href="/services" class="btn">See Services</a>
+              <a href="/projects" class="btn btn-outline">See Our Work</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Values (3 cards with icons) -->
+      <section class="section values">
+        <div class="container">
+          <div class="text-center mb-2">
+            <span class="eyebrow">What we believe</span>
+            <h2>Values that guide every install</h2>
+          </div>
+
+          <div class="grid grid-3 gap">
+            <div class="card">
+              <div class="icon-box" aria-hidden="true">
+                <!-- ruler/accuracy -->
+                <svg viewBox="0 0 24 24" width="22" height="22">
+                  <rect
+                    x="3"
+                    y="7"
+                    width="18"
+                    height="10"
+                    rx="2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M7 7v3M11 7v3M15 7v3M19 7v3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h3>Precision</h3>
+              <p class="small muted">
+                Accurate site measures, clean silicone lines, and aligned
+                hardware.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="icon-box" aria-hidden="true">
+                <!-- shield -->
+                <svg viewBox="0 0 24 24" width="22" height="22">
+                  <path
+                    d="M12 3l8 4v5c0 5-3.6 8.7-8 9-4.4-.3-8-4-8-9V7l8-4z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h3>Accountability</h3>
+              <p class="small muted">
+                Fully insured. We stand behind our work and communicate clearly.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="icon-box" aria-hidden="true">
+                <!-- sparkle/clean -->
+                <svg viewBox="0 0 24 24" width="22" height="22">
+                  <path
+                    d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Courtesy</h3>
+              <p class="small muted">
+                Friendly crews, floor protection, and spotless cleanup before we
+                leave.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats row reuse -->
+      <section class="section stats-row">
+        <div class="container grid stats-grid">
+          <div class="stat card">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path
+                  d="M4 7h16M4 12h16M4 17h16"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value">2,500+</div>
+              <div class="stat-label muted">Glass & mirror installs</div>
+            </div>
+          </div>
+
+          <div class="stat card">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path
+                  d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.8 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value">4.9★</div>
+              <div class="stat-label muted">Average rating</div>
+            </div>
+          </div>
+
+          <div class="stat card">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path
+                  d="M12 8v5l3 2"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value">Same-week</div>
+              <div class="stat-label muted">Turnarounds available</div>
+            </div>
+          </div>
+
+          <div class="stat card">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path
+                  d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <circle cx="12" cy="10" r="2.5" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <div class="stat-value">DFW</div>
+              <div class="stat-label muted">Dallas–Fort Worth area</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service area + contact prompt -->
+      <section class="section">
+        <div class="container grid grid-2 gap">
+          <div class="card">
+            <h2 class="mt-0">Where we work</h2>
+            <p class="small muted">Dallas–Fort Worth and surrounding cities.</p>
+            <ul
+              class="grid"
+              style="
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.35rem 1rem;
+              "
+            >
+              <li>Dallas</li>
+              <li>Fort Worth</li>
+              <li>Plano</li>
+              <li>Frisco</li>
+              <li>McKinney</li>
+              <li>Allen</li>
+              <li>Garland</li>
+              <li>Richardson</li>
+              <li>Irving</li>
+              <li>Carrollton</li>
+              <li>Arlington</li>
+              <li>Mesquite</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2 class="mt-0">Talk to Alex</h2>
+            <p class="small muted">
+              Have a shower, mirror, window, or storefront project? We’ll
+              measure and quote fast.
+            </p>
+            <div class="flex wrap gap">
+              <a href="/contact" class="btn">Get a Fast Quote</a>
+              <a href="tel:+14692545439" class="btn btn-outline"
+                >Call 469-254-5439</a
+              >
+            </div>
+            <ul class="cta-trust mt-2 flex">
+              <li>Fully insured</li>
+              <li>Up-front pricing</li>
+              <li>Warranty backed</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Footer (reuse yours) ===== -->
+    <footer id="footer" class="footer">
+      <div class="container footer-wrap">
+        <div class="footer-brand">
+          <a href="/" class="f-logo"
+            ><img
+              src="images/logo.png"
+              alt="Alex's Glass Co"
+              width="100"
+              height="auto"
+          /></a>
+          <p class="small muted mt-1">The Next Generation of Dallas Glaziers</p>
+        </div>
+        <nav class="footer-nav">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+14692545439">469-254-5439</a></li>
+            <li>
+              <a href="mailto:AlexsGlassCo@Gmail.com">AlexsGlassCo@Gmail.com</a>
+            </li>
+            <li>Serving Dallas–Fort Worth</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="small muted">
+          &copy; <span id="year"></span> Alex's Glass Co. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- LocalBusiness schema (nice to have on About) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Alex’s Glass Company",
+        "description": "Fully insured glazing company serving Dallas–Fort Worth: frameless showers, window glass, custom mirrors, and storefronts.",
+        "url": "https://alexsglassco.com/",
+        "telephone": "+1-469-254-5439",
+        "areaServed": "Dallas–Fort Worth",
+        "sameAs": ["https://www.facebook.com/", "https://www.instagram.com/"],
+        "image": "https://alexsglassco.com/images/logo.png"
+      }
+    </script>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="JS/Header.js"></script>
+  </body>
+</html>
