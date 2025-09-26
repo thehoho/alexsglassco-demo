@@ -200,6 +200,115 @@
               <option value="auto">Auto glass</option>
               <option value="window-frames">Window frames</option>
             </select>
+            <!-- WINDOW DETAILS (shown for everyone, optional) -->
+            <fieldset id="windowFields" class="window-fields mt-2">
+              <legend>
+                Window details <span class="muted">(optional)</span>
+              </legend>
+              <p class="small muted" style="margin: 0.25rem 0 0.75rem 0">
+                If you’re contacting us about window glass, add an approximate
+                size and a couple photos. Rough measurements are fine.
+              </p>
+
+              <div class="grid-3">
+                <label class="input-group">
+                  <span class="label">Width (inches)</span>
+                  <input
+                    class="input"
+                    type="number"
+                    inputmode="decimal"
+                    step="0.5"
+                    min="6"
+                    max="200"
+                    name="win_width_in"
+                    placeholder="e.g. 36"
+                  />
+                </label>
+
+                <label class="input-group">
+                  <span class="label">Height (inches)</span>
+                  <input
+                    class="input"
+                    type="number"
+                    inputmode="decimal"
+                    step="0.5"
+                    min="6"
+                    max="200"
+                    name="win_height_in"
+                    placeholder="e.g. 48"
+                  />
+                </label>
+
+                <label class="input-group">
+                  <span class="label">How many?</span>
+                  <input
+                    class="input"
+                    type="number"
+                    inputmode="numeric"
+                    min="1"
+                    max="50"
+                    name="win_count"
+                    placeholder="e.g. 2"
+                  />
+                </label>
+              </div>
+
+              <div class="grid-2 mt-1">
+                <label class="input-group">
+                  <span class="label">Glass type (if known)</span>
+                  <select class="input" name="win_glass_type">
+                    <option value="">Not sure</option>
+                    <option value="insulated">
+                      Insulated / IGU (double-pane)
+                    </option>
+                    <option value="tempered">Tempered</option>
+                    <option value="low-e">Low-E</option>
+                  </select>
+                </label>
+
+                <label class="input-group">
+                  <span class="label">Issue</span>
+                  <select class="input" name="win_issue">
+                    <option value="">Select</option>
+                    <option value="fogged">Fogged / failed seal</option>
+                    <option value="cracked">Cracked / broken</option>
+                    <option value="other">Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="mt-1">
+                <label class="input-group">
+                  <span class="label">Photos (up to 6)</span>
+                  <input
+                    class="input"
+                    id="winPhotos"
+                    name="win_photos"
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    multiple
+                  />
+                  <small class="muted">
+                    Take or attach clear photos of the window and a wider shot
+                    of the wall if possible.
+                  </small>
+                </label>
+
+                <!-- previews -->
+                <output
+                  id="photoPreview"
+                  class="photo-preview"
+                  aria-live="polite"
+                ></output>
+
+                <p class="muted tiny">
+                  If upload isn’t supported, submit the form and
+                  <strong>reply to our confirmation email with photos</strong>
+                  or text them to <a href="tel:+14692545439">469-254-5439</a>.
+                </p>
+              </div>
+            </fieldset>
 
             <textarea
               class="input mt-2"
@@ -433,6 +542,84 @@
         enforce();
       })();
     </script>
+    <script>
+      (function () {
+        const form = document.getElementById("quoteForm");
+        const select = document.getElementById("serviceSelect");
+        const msg = document.getElementById("blockedMsg");
+        const btn = document.getElementById("submitBtn");
+
+        // block unsupported services (your original behavior)
+        function enforceBlock() {
+          const v = select.value;
+          const blocked = v === "auto" || v === "window-frames";
+          msg.style.display = blocked ? "block" : "none";
+          btn.disabled = blocked;
+          btn.style.opacity = blocked ? 0.6 : 1;
+          btn.style.cursor = blocked ? "not-allowed" : "pointer";
+          return blocked;
+        }
+        select.addEventListener("change", enforceBlock);
+        enforceBlock();
+
+        // window photo previews + cap at 6
+        const fileInput = document.getElementById("winPhotos");
+        const preview = document.getElementById("photoPreview");
+        if (fileInput) {
+          fileInput.addEventListener("change", () => {
+            const files = Array.from(fileInput.files || []);
+            const limited = files.slice(0, 6);
+            if (files.length > 6) {
+              alert("Please select up to 6 photos.");
+              const dt = new DataTransfer();
+              limited.forEach((f) => dt.items.add(f));
+              fileInput.files = dt.files;
+            }
+            preview.innerHTML = "";
+            limited.forEach((file) => {
+              if (!file.type.startsWith("image/")) return;
+              const img = document.createElement("img");
+              img.alt = "Window photo preview";
+              img.loading = "lazy";
+              preview.appendChild(img);
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                img.src = e.target.result;
+              };
+              reader.readAsDataURL(file);
+            });
+          });
+        }
+
+        // gentle nudge: if service is window-related, require size OR at least 1 photo
+        form.addEventListener("submit", (e) => {
+          if (enforceBlock()) {
+            e.preventDefault();
+            return;
+          }
+
+          const service = select.value; // 'home','commercial','shower', etc.
+          const isWindowish = service === "home" || service === "commercial";
+
+          if (isWindowish) {
+            const w = form.elements["win_width_in"].value.trim();
+            const h = form.elements["win_height_in"].value.trim();
+            const hasPhoto =
+              fileInput && fileInput.files && fileInput.files.length > 0;
+
+            if ((!w || !h) && !hasPhoto) {
+              e.preventDefault();
+              alert(
+                "For window glass, please add an approximate width & height or attach at least one photo."
+              );
+              // focus the first window field
+              form.elements["win_width_in"].focus();
+            }
+          }
+        });
+      })();
+    </script>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
