@@ -486,9 +486,7 @@
                     loading="lazy"
                     decoding="async"
                   />
-                  <figcaption class="g-cap">
-                    Window • Plano, TX
-                  </figcaption>
+                  <figcaption class="g-cap">Window • Plano, TX</figcaption>
                 </figure>
               </a>
             </li>
@@ -637,7 +635,7 @@
           <form
             id="contact-form"
             class="card"
-            action="/contact"
+            action="/alexsglassco-demo/contact"
             method="get"
             novalidate
           >
@@ -645,6 +643,7 @@
               class="input"
               type="text"
               name="name"
+              id="homeName"
               placeholder="Your name"
               required
             />
@@ -652,6 +651,7 @@
               class="input"
               type="text"
               name="zip"
+              id="homeZip"
               placeholder="Zip Code"
               required
             />
@@ -774,6 +774,8 @@
       const select = document.getElementById("service-select");
       const warning = document.getElementById("service-warning");
       const submitBtn = form.querySelector('button[type="submit"]');
+      const nameEl = document.getElementById("homeName");
+      const zipEl = document.getElementById("homeZip");
 
       function checkService() {
         const v = select.value;
@@ -782,18 +784,41 @@
         submitBtn.disabled = blocked;
         submitBtn.style.opacity = blocked ? 0.6 : 1;
         submitBtn.style.cursor = blocked ? "not-allowed" : "pointer";
+        return blocked;
       }
 
       select.addEventListener("change", checkService);
-      form.addEventListener("submit", function (e) {
-        checkService();
-        if (submitBtn.disabled) {
-          e.preventDefault();
-        }
-      });
-
-      // run once on load
       checkService();
+
+      form.addEventListener("submit", function (e) {
+        // keep your block
+        if (checkService()) {
+          e.preventDefault();
+          return;
+        }
+
+        // Build URL and persist to sessionStorage for extra reliability
+        const name = (nameEl.value || "").trim();
+        const zip = (zipEl.value || "").trim();
+        const svc = select.value || "";
+
+        const params = new URLSearchParams();
+        if (name) params.set("name", name);
+        if (zip) params.set("zip", zip);
+        if (svc) params.set("service", svc);
+
+        // Save for contact page fallback
+        try {
+          sessionStorage.setItem(
+            "prefill_contact",
+            JSON.stringify({ name, zip, service: svc, ts: Date.now() })
+          );
+        } catch (err) {}
+
+        // Navigate (GitHub Pages friendly)
+        e.preventDefault();
+        window.location.href = "/contact?" + params.toString();
+      });
     })();
   </script>
 

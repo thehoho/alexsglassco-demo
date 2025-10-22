@@ -515,41 +515,52 @@
       </div>
     </footer>
 
-    <!-- Page JS: block unsupported services -->
     <script>
       (function () {
         const form = document.getElementById("quoteForm");
+        if (!form) return;
+
         const select = document.getElementById("serviceSelect");
         const msg = document.getElementById("blockedMsg");
         const btn = document.getElementById("submitBtn");
 
-        function enforce() {
-          const v = select.value;
-          const blocked = v === "auto" || v === "window-frames";
-          msg.style.display = blocked ? "block" : "none";
-          btn.disabled = blocked;
-          btn.style.opacity = blocked ? 0.6 : 1;
-          btn.style.cursor = blocked ? "not-allowed" : "pointer";
-        }
-        select.addEventListener("change", enforce);
-        form.addEventListener("submit", (e) => {
-          enforce();
-          // Client asked: block form when unsupported service is chosen
-          if (btn.disabled) {
-            e.preventDefault();
+        const fileInput = document.getElementById("winPhotos");
+        const preview = document.getElementById("photoPreview");
+
+        // -------- Prefill from URL or sessionStorage (from the Home CTA) --------
+        (function prefillFromHome() {
+          const qs = new URLSearchParams(window.location.search);
+          let stored = {};
+          try {
+            const raw = sessionStorage.getItem("prefill_contact");
+            if (raw) stored = JSON.parse(raw);
+          } catch (e) {}
+
+          const get = (key) => qs.get(key) || stored[key] || "";
+
+          const nameEl = form.elements["name"];
+          const zipEl = form.elements["zip"];
+          const serviceEl = document.getElementById("serviceSelect");
+
+          const name = get("name");
+          const zip = get("zip");
+          const service = get("service");
+
+          if (name) nameEl.value = name;
+          if (zip) zipEl.value = zip;
+          if (service && serviceEl.querySelector(`[value="${service}"]`)) {
+            serviceEl.value = service;
+            // trigger change so blocking/UX updates happen
+            serviceEl.dispatchEvent(new Event("change", { bubbles: true }));
           }
-        });
-        enforce();
-      })();
-    </script>
-    <script>
-      (function () {
-        const form = document.getElementById("quoteForm");
-        const select = document.getElementById("serviceSelect");
-        const msg = document.getElementById("blockedMsg");
-        const btn = document.getElementById("submitBtn");
 
-        // block unsupported services (your original behavior)
+          // focus the first empty required to speed up completion
+          if (!nameEl.value) nameEl.focus();
+          else if (!zipEl.value) zipEl.focus();
+          else if (!serviceEl.value) serviceEl.focus();
+        })();
+
+        // -------- Block unsupported services (auto, window-frames) --------
         function enforceBlock() {
           const v = select.value;
           const blocked = v === "auto" || v === "window-frames";
@@ -562,10 +573,8 @@
         select.addEventListener("change", enforceBlock);
         enforceBlock();
 
-        // window photo previews + cap at 6
-        const fileInput = document.getElementById("winPhotos");
-        const preview = document.getElementById("photoPreview");
-        if (fileInput) {
+        // -------- Photos preview (cap at 6) --------
+        if (fileInput && preview) {
           fileInput.addEventListener("change", () => {
             const files = Array.from(fileInput.files || []);
             const limited = files.slice(0, 6);
@@ -591,7 +600,7 @@
           });
         }
 
-        // gentle nudge: if service is window-related, require size OR at least 1 photo
+        // -------- Nudge: for window-ish services, ask for size OR a photo --------
         form.addEventListener("submit", (e) => {
           if (enforceBlock()) {
             e.preventDefault();
@@ -602,8 +611,8 @@
           const isWindowish = service === "home" || service === "commercial";
 
           if (isWindowish) {
-            const w = form.elements["win_width_in"].value.trim();
-            const h = form.elements["win_height_in"].value.trim();
+            const w = (form.elements["win_width_in"] || {}).value?.trim();
+            const h = (form.elements["win_height_in"] || {}).value?.trim();
             const hasPhoto =
               fileInput && fileInput.files && fileInput.files.length > 0;
 
@@ -612,8 +621,7 @@
               alert(
                 "For window glass, please add an approximate width & height or attach at least one photo."
               );
-              // focus the first window field
-              form.elements["win_width_in"].focus();
+              (form.elements["win_width_in"] || form).focus();
             }
           }
         });
